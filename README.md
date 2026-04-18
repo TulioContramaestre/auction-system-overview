@@ -12,9 +12,6 @@ _A real-time, salary-cap auction platform for running live player drafts._
 
 This project is **actively developed** — features, polish, and infrastructure work are all still landing regularly. The public site at hellotulio.com is live and in use; this repo exists as a public-facing overview while the source remains private.
 
-<!-- Optional: add a "last updated" line or current focus area here -->
-_Last updated: TBD_
-
 ---
 
 ## Demo
@@ -31,8 +28,6 @@ https://github.com/<user>/<repo>/assets/<id>/demo.mp4
 -->
 
 ### Screenshots
-
-<!-- Drop images into docs/images/ and uncomment the lines below -->
 
 | View | Preview |
 | --- | --- |
@@ -92,7 +87,7 @@ Possible topics to expand on:
 - Real-time state synchronization across multiple connected clients
 - Auction state machine and race conditions around bid / nomination expiry
 - WebSocket authentication alongside CSRF-protected HTTP requests
-- Deployment: Docker Swarm, secrets management, zero-downtime updates
+- Deployment: secrets management
 - Bulk import performance (up to 10,000 items) and validation
 - Handling reconnects, stale state, and tab-visibility edge cases on the client
 -->
