@@ -36,10 +36,10 @@ https://github.com/<user>/<repo>/assets/<id>/demo.mp4
 
 | View | Preview |
 | --- | --- |
-| Landing page | _coming soon_ <!-- ![Landing](docs/images/landing.png) --> |
-| Auctions list | _coming soon_ <!-- ![Auctions](docs/images/auctions-list.png) --> |
-| Live auction room | _coming soon_ <!-- ![Auction room](docs/images/auction-room.png) --> |
-| Management dashboard | _coming soon_ <!-- ![Management](docs/images/management.png) --> |
+| Landing page | [Landing](docs/images/Landing_page.png) <!-- ![Landing](docs/images/landing.png) --> |
+| Auctions list | [Auctions](docs/images/auction_list.png) <!-- ![Auctions](docs/images/auctions-list.png) --> |
+| Live auction room | [Auction Room 1](docs/images/Auction_Room.png) [Auction Room 2](docs/images/Auction_Room_2.png) <!-- ![Auction room](docs/images/auction-room.png) --> |
+| Management dashboard | [Management 1](docs/images/management_1.png) [Management 2](docs/images/management_2.png) [Management 3](docs/images/management_3.png) <!-- ![Management](docs/images/management.png) --> |
 
 ---
 
