@@ -75,16 +75,30 @@ The Next.js frontend is served behind an NGINX reverse proxy that handles TLS te
 
 ## Technical hurdles
 
-_This section is a work-in-progress — I'll be writing up the more interesting problems I ran into while building this._
+- **Stale UI when more than 5 captains were bidding at once**
+  - The auction room was running behind and out of date once a bunch of captains started bidding on the same player. The UI just wasn't keeping up with what the server already knew.
+  - Fixed by adding SWR with different `refreshInterval` values per query so the most important data refreshes the fastest, active item every 2 seconds, auction + teams every 3 seconds, unsold list every 5 seconds. This allowed for more up to date information without over loading the endpoint.
+  - stil priotizes the socker connection, this is used as safety net if the update does not go through.
+  - relies on mutate, that is triggered when the server returns a message that something has changed through the WebSocket.
+- **"Invalid token" errors from refresh intervals**
+  - users were getting invalid token errors from long sessions, and during bidding.
+  - added refresh at 10 minutes 5 minutes before the expiration of the 15 min access token.
+  - wrapped it in a promise to help to make sure they were not invalidated.
+- **Race conditions / duplicate bids in the auction engine**
+  - When two captains clicked bid at basically the same instant, it was possible for both to succeed and the second one would overwrite or duplicate the first.
+  - Used `SELECT ... FOR UPDATE` (SQLAlchemy `with_for_update()`) on the team row and item row inside the bid transaction, so only one request at a time can be can be handled.
+  - Added a Postgres **partial unique index** (`uq_bid_one_active_per_item`) that enforces at most one active bid per item at the database level, so even if the app-level logic had a gap, the DB would reject the duplicate.
+  - Wrapped the commit in a try/except on `IntegrityError`: if the same bid somehow lands twice (e.g. a client retry), we roll back and return the existing bid instead.
+- **WebSocket reconnection**
+  - Rewrote the socket hook to auto-reconnect with **exponential backoff** (1s, 2s, 4s, ... capped at 30s)
+  - Added a `visibilitychange` listener, when the tab comes back to focus, if the socket isn't actually open we close the stale one and reconnect immediately instead of waiting for the next backoff tick.
+  - On a successful reconnect we call an `onReconnect()` callback that re-fetches SWR data, so the UI state catches up to whatever happened while we were offline.
 
 <!--
 Possible topics to expand on:
 - Real-time state synchronization across multiple connected clients
-- Auction state machine and race conditions around bid / nomination expiry
 - WebSocket authentication alongside CSRF-protected HTTP requests
-- Deployment: secrets management
 - Bulk import performance (up to 10,000 items) and validation
-- Handling reconnects, stale state, and tab-visibility edge cases on the client
 -->
 
 ---
