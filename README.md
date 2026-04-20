@@ -16,11 +16,6 @@ This project is **actively developed** — features, polish, and infrastructure 
 
 ## Demo
 
-<!--
-Demo video: drop an .mp4 directly into this repo (renders inline on GitHub if under ~10MB),
-or replace this block with a link to a YouTube/Loom upload.
--->
-
 **Video demo:** [Youtube](https://www.youtube.com/watch?v=rHsBM6HdnCo)
 
 <!-- Example embed once uploaded:
@@ -98,4 +93,4 @@ Possible topics to expand on:
 
 Feel free to reach out if you'd like a live walkthrough or access to the demo environment.
 -->
-<!-- Drop your preferred contact here (email, LinkedIn, etc.) -->
+
