@@ -21,7 +21,7 @@ Demo video: drop an .mp4 directly into this repo (renders inline on GitHub if un
 or replace this block with a link to a YouTube/Loom upload.
 -->
 
-**Video walkthrough:** _coming soon_
+**Video walkthrough:** [Youtube](https://www.youtube.com/watch?v=rHsBM6HdnCo)
 
 <!-- Example embed once uploaded:
 https://github.com/<user>/<repo>/assets/<id>/demo.mp4
